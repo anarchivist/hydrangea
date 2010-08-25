@@ -2,7 +2,6 @@
   %input.content_type{:type=>"hidden", :name=>"content_type", :value=>params[:content_type]} 
   %label{:for=>"contributor_type"} Contributor Type
   %select#contributor_type{:name=>"contributor_type"}
-    %option{:value=>"person"} Person
-    %option{:value=>"organization"} Organization
-    %option{:value=>"conference"} Conference
-  %input{:type=>"submit", :value=>"Add Contributor"}
+    %option{:value=>"author"} Author
+    %option{:value=>"contributor"} Contributor
+  %input{:type=>"submit", :value=>"Add Person"}

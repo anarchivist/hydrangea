@@ -478,16 +478,13 @@
  
      this.each(function() {
        $("#re-run-add-contributor-action", this).click(function() {
-         $.fn.hydraMetadata.addContributor("person");
+         $.fn.hydraMetadata.addContributor("author");
        });
-       $("#add_person", this).click(function() {
-         $.fn.hydraMetadata.addContributor("person");
+       $("#add_author", this).click(function() {
+         $.fn.hydraMetadata.addContributor("author");
        });
-       $("#add_organization", this).click(function() {
-         $.fn.hydraMetadata.addContributor("organization");
-       });
-       $("#add_conference", this).click(function() {
-         $.fn.hydraMetadata.addContributor("conference");
+       $("#add_contributor", this).click(function() {
+         $.fn.hydraMetadata.addContributor("contributor");
        });
      });
  

@@ -1,0 +1,31 @@
+%form#document_metadata{ :action=>url_for(:action=>"update", :controller=>"assets", :content_type=>"aims_document"), :method=>"post","data-resourceType"=>"aims_document", "accept-charset"=>"utf-8"}
+  %fieldset#title_fields
+    %legend Title
+    %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"aims_document"}
+    %dl
+      - title = editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:")
+      %dt
+        = fedora_field_label("descMetadata", :title, "Title:")
+      %dd.title
+        = fedora_text_field(@document_fedora,"descMetadata", :title, :multiple=>false)   
+  %fieldset#contributor_fields
+    %legend Contributors
+    = fedora_field_label("descMetadata", :creator, "Author:")
+    = fedora_text_field_insert_link "descMetadata", :creator
+    %dl
+      %dt     
+      %dd#creator.contributor
+        = fedora_text_field(@document_fedora, "descMetadata", :creator, :label => "Authors:",:multiple=>true)       
+    = fedora_field_label("descMetadata", :contributor, "Contributor:")
+    = fedora_text_field_insert_link "descMetadata", :contributor
+    %dl 
+      %dt  
+      %dd#contributor.contributor
+        = fedora_text_field(@document_fedora, "descMetadata", :contributor, :label => "Contributors:",:multiple=>true)   
+  %fieldset#data_fields
+    %legend Contributors
+    = fedora_field_label("descMetadata", :date, "Date:")
+    %dl
+      %dt
+      %dd.publication_date
+        = fedora_text_field(@document_fedora,"descMetadata", :date,:label=> "Date", :multiple=>false)

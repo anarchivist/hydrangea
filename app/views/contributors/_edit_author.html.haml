@@ -1,0 +1,17 @@
+- author = edit_author
+- author_counter = edit_author_counter
+- base_id = "author_#{author_counter}"
+  
+%li
+  %dl.author.creator{:id=>base_id}
+    %dt
+    %dd#author_field
+      %ul
+        %li.author
+          = fedora_field_label("descMetadata", :creator, "Author")
+          = fedora_text_field(@document_fedora, "descMetadata", :creator, :label => "Author:",:multiple=>true)
+
+      -# Generate the field selectors and delete button for the whole person entry
+      - if params[:action] == "edit" || params[:action] == "create"
+        %a.destructive.destroy_contributor{:href=>asset_contributor_path(@document_fedora.pid, "author", author_counter)} X
+
