@@ -2,10 +2,10 @@
   %fieldset#title_fields
     %legend Title
     %input#content_type{:type=>"hidden", :name=>"content_type", :value=>"aims_document"}
+    = fedora_field_label("descMetadata", :title, "Title:")
     %dl
       - title = editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:")
       %dt
-        = fedora_field_label("descMetadata", :title, "Title:")
       %dd.title
         = fedora_text_field(@document_fedora,"descMetadata", :title, :multiple=>false)   
   %fieldset#contributor_fields
@@ -29,3 +29,24 @@
       %dt
       %dd.publication_date
         = fedora_text_field(@document_fedora,"descMetadata", :date,:label=> "Date", :multiple=>false)
+  %fieldset
+    %legend Tags
+    %dl
+      - archivist_tag = editable_metadata_field(@document_fedora, "properties", :archivist_tag, :label => "Archivist Tags:",:multiple=>true)
+      %dt
+        = fedora_field_label("properties", :archivist_tag, "Archivist Tags:")
+        = fedora_text_field_insert_link "properties", :archivist_tag
+      %dd#topic_tag.keywords
+        = fedora_text_field(@document_fedora,"properties", :archivist_tag, :multiple=>true)
+    %dl
+      - archivist_tag = editable_metadata_field(@document_fedora, "properties", :donor_tag, :label => "Donor Tags:",:multiple=>true)
+      %dt
+        = fedora_field_label("properties", :donor_tag, "Donor Tags:")
+        = fedora_text_field_insert_link "properties", :donor_tag
+      %dd#topic_tag.keywords
+        = fedora_text_field(@document_fedora,"properties", :donor_tag, :multiple=>true)
+    %dl
+      %dt
+        = fedora_field_label("descMetadata", :medium, "Document Type:")
+      %dd.data_type
+        = fedora_select(@document_fedora,"descMetadata", :medium, :choices=>AimsDocument.medium_choices.sort)

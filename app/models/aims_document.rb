@@ -15,8 +15,8 @@ class AimsDocument < ActiveFedora::Base
     has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
       m.field "note", :text  
       m.field "access", :string
-      m.field "archivist_tags", :string
-      m.field "donor_tags", :string
+      m.field "archivist_tag", :string
+      m.field "donor_tag", :string
        m.field 'collection', :string
         m.field 'depositor', :string
     end
@@ -74,5 +74,9 @@ class AimsDocument < ActiveFedora::Base
         self.retrieve( {contributor_type.to_sym => index.to_i} ).first.remove
         self.dirty = true
       end
+   
+       def self.medium_choices
+          ["Paper Document","Paper","Instructional Material","Proposal", "Reprint","Correspondence"]
+        end
    
 end
