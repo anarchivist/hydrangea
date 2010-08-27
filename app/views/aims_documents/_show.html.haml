@@ -2,6 +2,10 @@
 - javascript_includes << 'custom'
 - javascript_includes << "catalog/show"
 
+- stylesheet_links << "/assets/viewer-datauri.css"
+- stylesheet_links << "/assets/plain-datauri.css"
+
+
 :plain
   <style type="text/css" media="screen">
     input.editable-edit, input.textile-edit {display:none}
@@ -16,6 +20,20 @@
   %div.accordion-section
     %h2.section-title Download Files
     %div#uploads{'data-pid' => params[:id]}
+
+  %div.DV-viewer
+    %h2.section-title Document Viewer
+    %div#DV-container
+      %div#DV-loadingDocument
+        %span Loading
+      %noscript
+        %div#DV-noJS 
+          The Document Viewer requires that you enable Javascript.
+          
+- javascript_includes << '/assets/viewer.js'
+- javascript_includes << "/assets/templates.js"
+:javascript
+  DV.load('http://documents.nytimes.com/goldman-sachs-internal-emails.json', { container: '#DV-container' });
 
 - sidebar_items << capture do 
   = #render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"}

@@ -6,6 +6,31 @@ h1.site_title {
 }
 
 
+/* NYT Document Viewer */
+
+div.DV-viewer {
+    border: 1px solid #cccccc;
+	background:url("/images/accordion-gradient.png") repeat-x scroll left top #FFF;
+    overflow: auto;
+	padding: 10px;
+}
+
+div.DV-viewer h2.section-title {
+    margin: -8px 0 10px 0;
+}
+
+div.DV-viewer #DV-container { 
+    display: block;
+    }
+
+div.DV-viewer #DV-container #DV-docViewer {
+    position: inherit;
+    display:block;
+    width: 100%;
+    height: 100%;
+    
+}
+
 /* Accordion control */
 
 div.accordion-section {
