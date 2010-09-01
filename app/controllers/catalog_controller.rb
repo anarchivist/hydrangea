@@ -1,10 +1,12 @@
 require 'mediashelf/active_fedora_helper'
 class CatalogController
   
-  #include Blacklight::CatalogHelper
+  include DocViewerHelper
+  include Blacklight::CatalogHelper
   include Hydra::RepositoryController
   include Hydra::AccessControlsEnforcement
   before_filter :require_solr, :require_fedora, :only=>[:show, :edit]
+ 
   
   def edit
     af_base = ActiveFedora::Base.load_instance(params[:id])
@@ -27,7 +29,7 @@ class CatalogController
     #if current_user.nil?
     #  enforce_search_permissions
     #end
-
+    
     (@response, @document_list) = get_search_results( @extra_controller_params.merge!(:q=>build_lucene_query(params[:q])) )
     @filters = params[:f] || []
     respond_to do |format|
@@ -55,8 +57,12 @@ class CatalogController
     @document_fedora = the_model.load_instance(params[:id])
     params = {:qt=>"dismax",:q=>"*:*",:rows=>"0",:facet=>"true", :facets=>{:fields=>Blacklight.config[:facet][:field_names]}}
     @facet_lookup = Blacklight.solr.find params
+    @response = @facet_lookup
     enforce_read_permissions
   end
+  
+ 
+  
   
   # trigger show_with_customizations when show is called
   # This has the same effect as the (deprecated) alias_method_chain :show, :find_folder_siblings

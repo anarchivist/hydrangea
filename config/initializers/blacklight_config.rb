@@ -66,15 +66,22 @@ Blacklight.configure(:shared) do |config|
   # solr fields that will be treated as facets by the blacklight application
   #   The ordering of the field names is the order of the display 
   config[:facet] = {
-    :field_names => ["date_t",
+    :field_names => [
+      "collection_t",
+      "date_t",
       "title_t",
-      "medium_t",
+      "type_t",
+      "format_t",
+      "isPartOf_t",
       "location_t"
       ],
     :labels => {
+      "collection_t" => "Collection",
       "date_t"=>"Date",
       "title_t"=>"Title",
-      "medium_t"=>"Content Type",
+      "type_t"=>"Content Type",
+      "format_t" => "Media Format",
+      "isPartOf_t" => "Subseries",
       "location_t"=>"Location"
     },
     :limits=> {nil=>10}
@@ -84,11 +91,13 @@ Blacklight.configure(:shared) do |config|
   #   The ordering of the field names is the order of the display 
   config[:index_fields] = {
     :field_names => [
+      "collection_t",
       "date_t",
       "title_t",
       "medium_t",
       "location_t"],
     :labels => {
+       "collection_t" => "Collection",
       "date_t"=>"Date",
       "title_t"=>"Title",
       "medium_t"=>"Content Type",
@@ -100,6 +109,7 @@ Blacklight.configure(:shared) do |config|
   #   The ordering of the field names is the order of the display 
   config[:show_fields] = {
     :field_names => [
+       "collection_t",
       "text",
       "title_facet",
       "date_t",
@@ -109,6 +119,7 @@ Blacklight.configure(:shared) do |config|
       "access_t"
     ],
     :labels => {
+       "collection_t" => "Collection",
       "text" => "Text:",
       "title_facet" => "Title:",
       "date_t" => "Date:",

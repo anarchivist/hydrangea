@@ -119,6 +119,7 @@ div#search select#search_field {display: none;}
 
 .yui-t2 #yui-main .yui-b {
 	padding-top: 1em !important;
+    margin-left: 10px;
 }
 
 #showUtils {
@@ -148,6 +149,7 @@ div#search select#search_field {display: none;}
 
 /* Override Blacklight search contraints/filters block */
 
+#doc4 { width:1190px}
 
 #appliedParams h3 {position:relative; padding:0px; margin:0;background-color:#FFFFFF; border: none; overflow:visible; font-weight: normal; display: inline;}
 #appliedParams img {display: none;}

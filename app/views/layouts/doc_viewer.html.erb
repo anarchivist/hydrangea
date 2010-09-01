@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<!-- 
+This is an exact copy of the Blacklight application.html.erb with one modification: the footer includes "Powered by Hydra"
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="ClearType" content="true">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title><%= h(@page_title || application_name) %></title>
+   
+
+  <link href="/stylesheets/DV/components/ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/DV/components/annotations.css" media="screen" rel="stylesheet" type="text/css" />
+  
+  <!--[if (!IE)|(gte IE 8)]><!-->
+ <link href="/assets/viewer-datauri.css" media="screen" rel="stylesheet" type="text/css" />
+ <link href="/assets/plain.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/assets/viewer.css" media="screen" rel="stylesheet" type="text/css" />
+ <!--<![endif]-->
+ <!--<![endif]-->
+ <!--[if lte IE 7]>
+ <link href="public/assets/viewer.css" media="screen" rel="stylesheet" type="text/css" />
+ <link href="public/assets/plain.css" media="screen" rel="stylesheet" type="text/css" />
+ <![endif]-->
+
+    
+    
+  </head>
+  
+    <body>
+	
+	<%= yield %>
+	
+	</body>
+	
+	</html>

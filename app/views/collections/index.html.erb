@@ -1,0 +1,7 @@
+<h2>Collections</h2>
+
+<%= link_to "Steven J. Gould Collection", collection_path("1") %>
+
+<% sidebar_items << capture do %>
+  <%= render :partial=>"catalog/_show_partials/facets" %>
+<% end %>

@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ead xsi:schemaLocation="urn:isbn:1-931666-22-9 http://www.loc.gov/ead/ead.xsd" xmlns:ns2="http://www.w3.org/1999/xlink" xmlns="urn:isbn:1-931666-22-9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <eadheader repositoryencoding="iso15511" countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b">
+        <eadid countrycode="US" mainagencycode="US-CSt"></eadid>
+        <filedesc>
+            <titlestmt>
+                <titleproper>Series VI: Born Digital Material
+                    <num>M1437.D</num>
+                </titleproper>
+                <titleproper type="filing">Series VI: Born Digital Material</titleproper>
+                <author>Finding aid prepared by Peter W. Chan</author>
+            </titlestmt>
+            <publicationstmt>
+                <publisher>Stanford University. Department of Special Collections and University Archives</publisher>
+                <address>
+                    <addressline>Stanford University Libraries</addressline>
+                    <addressline>557 Escondido Mall</addressline>
+                    <addressline>Stanford, California, 94305-6064</addressline>
+                    <addressline>Repository email: speccollref@stanford.edu</addressline>
+                </address>
+                <date>1980-2002</date>
+            </publicationstmt>
+        </filedesc>
+        <profiledesc>
+            <creation>This finding aid was produced using the Archivists' Toolkit
+                <date>2010-08-26T16:20-0700</date>
+            </creation>
+            <langusage>English</langusage>
+            <descrules>Describing Archives: A Content Standard</descrules>
+        </profiledesc>
+    </eadheader>
+    <archdesc level="collection">
+        <did>
+            <unittitle>Series VI: Gould Born Digital Material</unittitle>
+            <unitid>M1437.D</unitid>
+            <repository>
+                <corpname>Stanford University. Department of Special Collections and University Archives</corpname>
+            </repository>
+            <langmaterial>
+                <language langcode="eng"/>
+            </langmaterial>
+            <physdesc>
+                <extent>164.0 Computer Media</extent>
+                <extent>[61 5.25" floppy diskettes, 98 3.5" floppy diskettes, 2 boxes  punch cards, 3 0.5 inch 9 track open-reel tape, 1,059 files]</extent>
+            </physdesc>
+            <unitdate normal="1979/2002" type="inclusive">1979-2002</unitdate>
+            <materialspec id="ref130" label="File Types and Formats">File Type: Computer Program; Data set; Document; Speadsheet. File Format: ASCII Text; WordPerfect 4.2, 5.0, 5.1, 6.0, 6.1; Microsoft Word 2.0, 6.0, 97, 2000; Microsoft RTF; Microsoft Excel 4.0; Lotus 1-2-3 2.0</materialspec>
+            <origination label="creator">
+                <persname source="ingest" role="Author (aut)">Gould, Stephen Jay</persname>
+            </origination>
+        </did>
+        <userestrict id="ref135">
+            <head>Publication Rights</head>
+            <p>All requests to reproduce, publish, quote from, or otherwise use collection materials must be submitted in writing to the Head of Special Collections and University Archives, Stanford University Libraries, Stanford, California 94304-6064. Consent is given on behalf of Special Collections as the owner of the physical items and is not intended to include or imply permission from the copyright owner. Such permission must be obtained from the copyright owner, heir(s) or assigns. See: http://library.stanford.edu/depts/spc/pubserv/permissions.html.</p>
+            <p>Restrictions also apply to digital representations of the original materials. Use of digital files is restricted to research and educational purposes.</p>
+        </userestrict>
+        <accessrestrict id="ref134">
+            <head>Access</head>
+            <p>Collection is open for research; digital material is availabe online at www.?????; other materials must be requested at least 48 hours in advance of intended use.</p>
+        </accessrestrict>
+        <processinfo id="ref44">
+            <head>Processing Note</head>
+            <p>Computer Media #1-3 (single sided single density) unreadable with existing equipment; no files copied. Computer Media #35 physical damge; no files copied. Computer Media #39, 60, 134, 135 blank diskettes. Computer Media #94 contained virus and was cleaned using Sophos Anti-Virus.</p>
+            <p>Files in 3 computer tapes and 1 box of punch cards are not migrated.</p>
+            <p>1 box of punch cards is migrated by Computer History Museum, Mountain View, California, USA and stored in DVD. The DVD is assigned as Computer Media #144.</p>
+            <p>Logical images of the files in floppy diskettes are created using FTK Imager and stored in a standalone personal computer. After detecting and cleaning computer virus using Sophos Anti-Virus, the cleaned files are transferred to Stanford Powervault (a secured server with regular backup schedule).</p>
+            <p>FTK Tookitis is used to assign access rights, identify restricted materials, define EAD components and generate technical metadata (MD5 checksum, file format, etc.).</p>
+            <p>The files with all the metadata are then transferred to SALT. All files are ingested into Stanford Digital Repository (a dark digital archive) for long term preservation.</p>
+        </processinfo>
+        <prefercite id="ref133">
+            <head>Preferred Citation</head>
+            <p>Stephen Jay Gould Papers, M1437. Dept. of Special Collections, Stanford University Libraries, Stanford, Calif.</p>
+        </prefercite>
+        <scopecontent id="ref136">
+            <head>Scope and Contents note</head>
+            <p>This series consists primarily of the born digital material from the Stephen Jay Gould (SJG) papers. The born digital material was stored in floppy diskettes, tapes and punch cards. The labels, if any, on the computer media are in many cases too brief to tell the contents in the diskettes. The processor has to view the contents of the files to decide the proper EAD component levels which the contents belong to. Since SJG divided his works into "Articles", "Abstracts, Reviews, Letters, etc.", "Natural History Column", and "Books" in his bibliography, the processor followed this arrangement and added "Bibliography &amp; CV", "Teaching", "Rare Books", "Punch Cards", "Misc.", and "Computer Media Photos" as other subseries. Details of the ten subseries are as follows.</p>
+            <p>Subseries I, Articles, is divided into 15 sub-subseries according to the publication years: : 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2001, "Unidentified Period". Articles which the years of publication cannot be identified were put in "Unidentified Period". There are 99 files in this subseries.</p>
+            <p>Subseries II, Abstracts, Reviews, Letters, etc., is divided into 6 sub-subseries according to the publication years: 1992, 1994, 1996, 1997, 1999, "Unidentified Period". Articles which the years of publication cannot be identified were put in "Unidentified Period". There are 107 files in this subseries.</p>
+            <p>Subseries III, Natural History Column, is divided into 12 sub-subseries according to the publication years: 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, "Unidentified Period". Articles which the years of publication cannot be identified were put in "Unidentified Period". There are 171 files in this subseries.</p>
+            <p>Subseries IV, Books, contains drafts of 12 books written by SJG: The Structure of Evolutionary Theory, Full House, The Book of Life, Triumph and Tragedy in Mudville, Dinosaur in a Haystack, The Burgess Shale and the Nature of History, Time's Arrow, time's Cycle, The Lying Stones of Marrakech, Eight Little Piggies, Hidden Histories of Science, The Hedgehog, the Fox, and the Magister’s Pox, The Mismeasure of Man. There are 404 files in this subseries.</p>
+            <p>Subseries V, Bibliography &amp; CV, contains several versions of bibliography and CV of SJG. There are 44 files in this subseries.</p>
+            <p>Subseries VI, Teaching, contains examination papers, syllabus, and student lists. There are 12 files in this subseries.</p>
+            <p>Subseries VII, Rare Books, contains information on the rare books owned by SJG. There are 28 files in this subseries.</p>
+            <p>Subseries VIII, Punch Cards, contains computer programs and data migrated from one box of punch cards. Data in another box of punch cards is not migrated. There are 11 files in this subseries.</p>
+            <p>Subseries IX, Misc., is divided into 3 sub-subseries: National Science Foundation (NSF) contains contains documents on NSF grants; Paleontological Society contains correspondence related to the Society; and Others. There are 18 files in this subseries.</p>
+            <p>Subseries X, Computer Media Photos, contains photos of the punch cards, tapes, 5.25 inch floppy and 3.5 inch floppy diskettes taken by the processor. There are 165 files in this subseries.</p>
+        </scopecontent>
+        <bioghist id="ref141">
+            <head>Biography</head>
+            <p>When five-year-old Stephen Jay Gould first marveled at the towering Tyrannosaurus skeleton in the American Museum of Natural History, he decided to spend his life studying fossils. Although few children in Queens, New York, shared his early fascination for evolution, he never considered any other career but paleontology.</p>
+            <p>Now professor at Harvard University and curator of its Museum of Comparative Zoology, Gould attended Antioch College, then returned to Manhattan, for graduate work in paleontology at Columbia University. For his doctoral thesis he investigated variation and evolution in an obscure Burmudian land snail, anchoring his later theorizing in intense scrutiny of a single group of organisms, as Darwin had done with Barnacles.</p>
+            <p>At one point, he hoped to find correlation between variation and different ecologies within the creature's range, but the snails' sizes, colors and shell shapes seemed to vary quite independently of local environment. Impressed with the importance of nonselectionist factors in evolution, he also became interested in structural constraints: How slight changes in one feature must alter several others within definite limits—what Darwin had called "correlation of parts."</p>
+            <p>Gould also became interested in distinguishing incidental features from adaptive ones. He coauthored (with Richard Lewontin) an influential paper inspired by the spandrels of certain medieval cathedrals: Geometric architectural features decorated with impressive religious paintings. While art historians had analyzed their distinctive aesthetic, most had forgotten the spandrel's humble origin as an unavoidable engineering consequences of stress distribution—a structural byproduct of constructing that kind of dome. As a biological example, Gould points out that the human chin, often cited as "advanced" in comparisons with "lower" primates, holds no special correlation with higher intelligence. It is, like the spandrels, an incidental result of stress and growth factors in the human jawbone.</p>
+            <p>Although Gould has become closely identified with the influential idea of punctuated equilibrium, it actually originated with paleontologist Niles Eldredge and was developed by them jointly. Eldredge's detailed studies of trilobites brought home to him a pattern that had impressed Thomas Henry Huxley: The fossil record seems to show "bursts" of speciation, then long periods of stability. Darwin's reply was that the fossil record was then too sketchy and incompletely known to provide evidence of pattered rates. But vast accumulations of paleontological evidence over the last century do not support Darwin's case for a steady, gradual evolutionary rate. Eldredge's trilobite series suggested, instead, relatively short episodes of rapid evolution followed by long periods of stability, confirming Huxley's impression. Gould enthusiastically agreed; it was time to acknowledge that such episodic patterns in the rocks probably reflect the reality of life's history. By the 1980s, "Punctuationalism" had become widely adopted and was proving to be a fruitful hypothesis for generating new insights and research. Although one of Gould's lifelong heroes is Charles Darwin, whose achievements he has celebrated in such books as Ever Since Darwin (1977) and The Panda's Thumb (1980), he is irreverent toward the orthodox Synthetic Theory of evolution that has prevailed in biology since the 1940s. Dissatisfied with the limits of its explanatory power, he is open to exploring other possible mechanisms and approaches to supplement traditional natural selection—to the dismay of more conservative colleagues.</p>
+            <p>One of his approaches has been to emphasize the hierarchy of levels on which evolution operates; biochemical, genetic, embryological, physiological, individual, societal, species, lineages. Sorting or selection on any of these levels, he believes, produces significant effects on the level above or below it—a promising and largely unexplored area for future research. Yale paleontologist Elisabeth Vrba and others agree with Gould about the importance of such hierarchical studies.</p>
+            <p>Among opponents of punctuationalism, a few (Richard Dawkins, Verne Grant) complain Gould has set up a "straw man" of Darwinian gradualism and that jumpy or "quantum evolution" was discussed years ago by Ernst Mayr and George Gaylord Simpson. Examples of Darwin's self-contradictory fudging are easy to find, but Gould maintains that change "by slow, insensible degrees" remained central to Darwinian thought. And while acknowledging his predecessors' insights, Gould argues that often it is a shift of emphasis and focus rather than a radically new idea that leads to deeper scientific understanding.</p>
+            <p>Gould's success as a popular author is another tempting target for critics; he does not shrink from public controversies. He appeared before Congressional committees on environmental issues, was a courtroom witness in the Arkansas Scopes II trial regarding teaching of evolution in the public schools and is prominent in speaking out against pseudo-scientific racism and biological determinism. But even one of his most adamant detractors, Robert Wright, while recently attacking one of his books in the pages of The New Republic, grudgingly began his diatribe: "The acclaim for Stephen Jay Gould is just shy of being universal . . . He is, after all, America's evolutionist laureate."</p>
+            <p>[ Richard Milner, The Encyclopedia of Evolution, NY: Facts on File, 1990, pp. 198-199. ]</p>
+        </bioghist>
+        <controlaccess>
+            <persname source="naf">Shearer, Rhonda Roland, 1954- </persname>
+            <subject source="ingest">History of Science</subject>
+        </controlaccess>
+        <dsc>
+            <c id="ref1" level="subseries">
+                <did>
+                    <unittitle>Subseries I: Articles</unittitle>
+                    <langmaterial>
+                        <language langcode="eng"/>
+                    </langmaterial>
+                </did>
+                <c id="ref59" level="file">
+                    <did>
+                        <unittitle>1987</unittitle>
+                    </did>
+                </c>
+                <c id="ref60" level="file">
+                    <did>
+                        <unittitle>1988</unittitle>
+                    </did>
+                </c>
+                <c id="ref61" level="file">
+                    <did>
+                        <unittitle>1989</unittitle>
+                    </did>
+                </c>
+                <c id="ref62" level="file">
+                    <did>
+                        <unittitle>1990</unittitle>
+                    </did>
+                </c>
+                <c id="ref63" level="file">
+                    <did>
+                        <unittitle>1991</unittitle>
+                    </did>
+                </c>
+                <c id="ref64" level="file">
+                    <did>
+                        <unittitle>1992</unittitle>
+                    </did>
+                </c>
+                <c id="ref65" level="file">
+                    <did>
+                        <unittitle>1993</unittitle>
+                    </did>
+                </c>
+                <c id="ref66" level="file">
+                    <did>
+                        <unittitle>1994</unittitle>
+                    </did>
+                </c>
+                <c id="ref67" level="file">
+                    <did>
+                        <unittitle>1995</unittitle>
+                    </did>
+                </c>
+                <c id="ref68" level="file">
+                    <did>
+                        <unittitle>1996</unittitle>
+                    </did>
+                </c>
+                <c id="ref69" level="file">
+                    <did>
+                        <unittitle>1997</unittitle>
+                    </did>
+                </c>
+                <c id="ref70" level="file">
+                    <did>
+                        <unittitle>1998</unittitle>
+                    </did>
+                </c>
+                <c id="ref71" level="file">
+                    <did>
+                        <unittitle>1999</unittitle>
+                    </did>
+                </c>
+                <c id="ref72" level="file">
+                    <did>
+                        <unittitle>2001</unittitle>
+                    </did>
+                </c>
+                <c id="ref80" level="file">
+                    <did>
+                        <unittitle>Unidentidied Period</unittitle>
+                    </did>
+                </c>
+            </c>
+            <c id="ref73" level="subseries">
+                <did>
+                    <unittitle>Subseries II: Abstracts, Reviews, Letters, etc.</unittitle>
+                </did>
+                <c id="ref74" level="file">
+                    <did>
+                        <unittitle>1992</unittitle>
+                    </did>
+                </c>
+                <c id="ref75" level="file">
+                    <did>
+                        <unittitle>1994</unittitle>
+                    </did>
+                </c>
+                <c id="ref76" level="file">
+                    <did>
+                        <unittitle>1996</unittitle>
+                    </did>
+                </c>
+                <c id="ref77" level="file">
+                    <did>
+                        <unittitle>1997</unittitle>
+                    </did>
+                </c>
+                <c id="ref78" level="file">
+                    <did>
+                        <unittitle>1999</unittitle>
+                    </did>
+                </c>
+                <c id="ref79" level="file">
+                    <did>
+                        <unittitle>Unidentidied Period</unittitle>
+                    </did>
+                </c>
+            </c>
+            <c id="ref13" level="subseries">
+                <did>
+                    <unittitle>Suberies III: Natural History Column</unittitle>
+                </did>
+                <c id="ref28" level="file">
+                    <did>
+                        <unittitle>1990</unittitle>
+                        <langmaterial>
+                            <language langcode="eng"/>
+                        </langmaterial>
+                    </did>
+                </c>
+                <c id="ref30" level="file">
+                    <did>
+                        <unittitle>1991</unittitle>
+                        <langmaterial>
+                            <language langcode="eng"/>
+                        </langmaterial>
+                    </did>
+                </c>
+                <c id="ref81" level="file">
+                    <did>
+                        <unittitle>1992</unittitle>
+                    </did>
+                </c>
+                <c id="ref82" level="file">
+                    <did>
+                        <unittitle>1993</unittitle>
+                    </did>
+                </c>
+                <c id="ref83" level="file">
+                    <did>
+                        <unittitle>1994</unittitle>
+                    </did>
+                </c>
+                <c id="ref84" level="file">
+                    <did>
+                        <unittitle>1995</unittitle>
+                    </did>
+                </c>
+                <c id="ref85" level="file">
+                    <did>
+                        <unittitle>1996</unittitle>
+                    </did>
+                </c>
+                <c id="ref86" level="file">
+                    <did>
+                        <unittitle>1997</unittitle>
+                    </did>
+                </c>
+                <c id="ref87" level="file">
+                    <did>
+                        <unittitle>1998</unittitle>
+                    </did>
+                </c>
+                <c id="ref88" level="file">
+                    <did>
+                        <unittitle>1999</unittitle>
+                    </did>
+                </c>
+                <c id="ref89" level="file">
+                    <did>
+                        <unittitle>2000</unittitle>
+                    </did>
+                </c>
+                <c id="ref90" level="file">
+                    <did>
+                        <unittitle>Unidentified Period</unittitle>
+                    </did>
+                </c>
+            </c>
+            <c id="ref91" level="subseries">
+                <did>
+                    <unittitle>Subseries IV Books</unittitle>
+                </did>
+                <c id="ref92" level="file">
+                    <did>
+                        <unittitle>The Structure of Evolutionary Theory</unittitle>
+                    </did>
+                </c>
+                <c id="ref93" level="file">
+                    <did>
+                        <unittitle>Full House</unittitle>
+                    </did>
+                </c>
+                <c id="ref94" level="file">
+                    <did>
+                        <unittitle>The Book of Life</unittitle>
+                    </did>
+                </c>
+                <c id="ref95" level="file">
+                    <did>
+                        <unittitle>Triumph and Tragedy in Mudville</unittitle>
+                    </did>
+                </c>
+                <c id="ref96" level="file">
+                    <did>
+                        <unittitle>Dinosaur in a Haystack</unittitle>
+                    </did>
+                </c>
+                <c id="ref97" level="file">
+                    <did>
+                        <unittitle>The Burgess Shale and the Nature of History</unittitle>
+                    </did>
+                </c>
+                <c id="ref98" level="file">
+                    <did>
+                        <unittitle>Time's Arrow, time's Cycle</unittitle>
+                    </did>
+                </c>
+                <c id="ref99" level="file">
+                    <did>
+                        <unittitle>The Lying Stones of Marrakech</unittitle>
+                    </did>
+                </c>
+                <c id="ref100" level="file">
+                    <did>
+                        <unittitle>Eight Little Piggies</unittitle>
+                    </did>
+                </c>
+                <c id="ref101" level="file">
+                    <did>
+                        <unittitle>Hidden Histories of Science</unittitle>
+                    </did>
+                </c>
+                <c id="ref102" level="file">
+                    <did>
+                        <unittitle>The Hedgehog, the Fox, and the Magister’s Pox</unittitle>
+                    </did>
+                </c>
+                <c id="ref103" level="file">
+                    <did>
+                        <unittitle>The Mismeasure of Man</unittitle>
+                    </did>
+                </c>
+            </c>
+            <c id="ref104" level="subseries">
+                <did>
+                    <unittitle>Subseries V Bibliography &amp; CV</unittitle>
+                </did>
+                <c id="ref105" level="file">
+                    <did>
+                        <unittitle>Bibliography</unittitle>
+                    </did>
+                </c>
+                <c id="ref106" level="file">
+                    <did>
+                        <unittitle>CV</unittitle>
+                    </did>
+                </c>
+            </c>
+            <c id="ref107" level="subseries">
+                <did>
+                    <unittitle>Subseries VI Teaching</unittitle>
+                </did>
+            </c>
+            <c id="ref108" level="subseries">
+                <did>
+                    <unittitle>Subseries VII SJG Rare Books</unittitle>
+                </did>
+            </c>
+            <c id="ref139" level="subseries">
+                <did>
+                    <unittitle>Subseries VIII Punch Cards</unittitle>
+                </did>
+            </c>
+            <c id="ref109" level="subseries">
+                <did>
+                    <unittitle>Subseries IX Misc.</unittitle>
+                </did>
+                <c id="ref112" level="file">
+                    <did>
+                        <unittitle>NFS</unittitle>
+                    </did>
+                </c>
+                <c id="ref113" level="file">
+                    <did>
+                        <unittitle>Paleontological Society</unittitle>
+                    </did>
+                </c>
+                <c id="ref115" level="file">
+                    <did>
+                        <unittitle>Others</unittitle>
+                    </did>
+                </c>
+            </c>
+            <c id="ref110" level="subseries">
+                <did>
+                    <unittitle>Subseries X Computer Media Photos</unittitle>
+                </did>
+            </c>
+        </dsc>
+    </archdesc>
+</ead>

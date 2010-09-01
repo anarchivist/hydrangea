@@ -1,7 +1,7 @@
 require 'hydra'
 class AimsDocument < ActiveFedora::Base
 
-
+    
     include Hydra::ModelMethods 
 
     has_relationship "parts", :is_part_of, :inbound => true
@@ -17,8 +17,9 @@ class AimsDocument < ActiveFedora::Base
       m.field "access", :string
       m.field "archivist_tag", :string
       m.field "donor_tag", :string
-       m.field 'collection', :string
-        m.field 'depositor', :string
+      m.field 'collection', :string
+      m.field 'depositor', :string
+      m.field 'pages', :string
     end
     
     has_metadata :name => "stories", :type=>ActiveFedora::MetadataDatastream do |m|
@@ -38,10 +39,10 @@ class AimsDocument < ActiveFedora::Base
       #m.field "rights", :text, :xml_node => "rights"
       
       # Setting up special named fields
-      m.field "subject_heading", :string, :xml_node => "subject", :encoding => "LCSH" 
-      m.field "spatial_coverage", :string, :xml_node => "spatial", :encoding => "TGN"
-      m.field "temporal_coverage", :string, :xml_node => "temporal", :encoding => "Period"
-      m.field "type", :string, :xml_node => "type", :encoding => "DCMITYPE"
+      #m.field "subject_heading", :string, :xml_node => "subject", :encoding => "LCSH" 
+      #m.field "spatial_coverage", :string, :xml_node => "spatial", :encoding => "TGN"
+      #m.field "temporal_coverage", :string, :xml_node => "temporal", :encoding => "Period"
+      #m.field "type", :string, :xml_node => "type", :encoding => "DCMITYPE"
     end
 
 

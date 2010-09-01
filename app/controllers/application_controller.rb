@@ -39,4 +39,7 @@ class ApplicationController
     session[:bounce]=params[:bounce]
   end
 
+  
+       
+
 end

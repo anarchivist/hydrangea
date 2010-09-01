@@ -1,0 +1,34 @@
+<h2>Steven J. Gould</h2>
+<div id="collection_image">
+  <%= image_tag "gould_splash.png"%>
+</div>
+
+<%= link_to "Browse the Collection", "#{catalog_index_path}/?f[collection_t][]=Steven+J.+Gould", :class=>"browse" %>
+
+<dl>
+<%= display_for_ead_node("bioghist") %>
+</dl>
+
+<% sidebar_items << capture do %>
+  <%= render :partial=>"catalog/_show_partials/facets" %>
+<% end %>
+
+
+<h3>Descriptive Summary</h3>
+<div>
+	<% @descriptor.xpath('//archdesc[@level="collection"]/did/*[@label]').each do |desc_node| %>
+	  <dl>
+	  <dt><%= desc_node.attribute("label") %></dd>
+	  <dd><%= desc_node.content %></dt>
+	  </dl>
+	<% end %>
+</div>
+<h3>Additional Information</h3>
+<div>
+  <%= display_for_ead_node("scopecontent") %>
+  <%= display_for_ead_node("accessrestrict") %>
+  <%= display_for_ead_node("userestrict") %>
+  <%= display_for_ead_node("prefercite") %>
+  <%= display_for_ead_node("acqinfo") %>
+  <%= display_for_ead_node("controlaccess") %>
+</div>

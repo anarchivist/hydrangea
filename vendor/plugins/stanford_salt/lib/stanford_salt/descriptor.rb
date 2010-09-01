@@ -6,18 +6,18 @@ class Descriptor
   @@desctriptors = Hash[]
   attr_accessor :doc, :series
   
-  def self.register(id="sc0340")
+  def self.register(id="gould")
     @@desctriptors[id] = self.new( id )
   end
   
-  def self.retrieve( id="sc0340" )
+  def self.retrieve( id="gould" )
     if @@desctriptors[id].nil?
-      self.register("sc0340")
+      self.register("gould")
     end
     return @@desctriptors[id]
   end
   
-  def initialize(id="sc0340")
+  def initialize(id="gould")
     @doc = load_data( id )
   end
   

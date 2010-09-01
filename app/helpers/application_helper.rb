@@ -4,7 +4,7 @@ module ApplicationHelper
   include HydraHelper
   
   def application_name
-    'Hydrangea (Hydra Demo App)'
+    'AIMS Demo'
   end
   
   def get_data_with_linked_label(doc, label, field_string, opts={})
@@ -24,6 +24,26 @@ module ApplicationHelper
       text
     end
   end
+  
+  def display_for_ead_node( node_name , ead_description=@descriptor ) 
+    xpath_query = "//archdesc[@level=\"collection\"]/#{node_name}"
+    response = ""
+    response << "<dl>"
+    if !ead_description.xpath( xpath_query + "/head" ).first.nil? && !ead_description.xpath( xpath_query + "/p" ).first.nil?
+      response << "<dt> #{ead_description.xpath( xpath_query + "/head" ).first.content} </dt>"
+      response << "<dd> #{ead_description.xpath( xpath_query + "/p" ).first.content} </dd>"
+      response << "</dl>"
+    end
+    if node_name == "controlaccess"
+      response << "<ul>"
+      ead_description.xpath( xpath_query + "/*[@source]" ).each do |subject|
+        response << "<li>[#{subject.attribute("source")}]  #{subject.content}</li>"
+      end
+    end
+    return response
+  end
+  
+  
   
   def linked_label(field, field_string)
     link_to(field, add_facet_params(field_string, field).merge!({"controller" => "catalog", :action=> "index"}))

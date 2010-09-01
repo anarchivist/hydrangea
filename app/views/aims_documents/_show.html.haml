@@ -12,7 +12,23 @@
   </style>
 
 .document_viewer#cover_container
+  %div.DV-viewer
+    %h2.section-title Document Viewer
+    %span 
+      = link_to 'full screen', url_for("/doc_viewer/#{params[:id]}")
+    %div#DV-container
+      %div#DV-loadingDocument
+        %span Loading
+        %noscript
+        %div#DV-noJS 
+          The Document Viewer requires that you enable Javascript.
 
+  - javascript_includes << '/assets/viewer.js'
+  - javascript_includes << "/assets/templates.js"
+
+  :javascript
+     DV.load( '/doc_viewer/#{@document_fedora.pid}/json' , { container: '#DV-container' });
+  
   %div.accordion-section
     %h2.section-title Description
     = render :partial => 'aims_documents/edit_description'
@@ -21,21 +37,14 @@
     %h2.section-title Download Files
     %div#uploads{'data-pid' => params[:id]}
 
-  %div.DV-viewer
-    %h2.section-title Document Viewer
-    %div#DV-container
-      %div#DV-loadingDocument
-        %span Loading
-      %noscript
-        %div#DV-noJS 
-          The Document Viewer requires that you enable Javascript.
-          
-- javascript_includes << '/assets/viewer.js'
-- javascript_includes << "/assets/templates.js"
-:javascript
-  DV.load('http://documents.nytimes.com/goldman-sachs-internal-emails.json', { container: '#DV-container' });
+
+ 
+= #DV.load( #{JSON.load(open("http://localhost:8983/fedora/objects/druid:1/datastreams/json/content")).to_json}, { container: '#DV-container' });
+  
+= #DV.load('http://documents.nytimes.com/goldman-sachs-internal-emails.json', { container: '#DV-container' });
+= #  DV.load(#{ @document_fedora.datastreams['json'].content }, { container: '#DV-container' });
 
 - sidebar_items << capture do 
-  = #render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"}
+  = render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"}
 
 = async_load_tag(asset_file_assets_path(params[:id]), 'uploads')

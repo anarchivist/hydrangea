@@ -1,0 +1,22 @@
+<% @page_title = "#{application_name}" %>
+	<div id="DV-container">
+
+		<div id="DV-loadingDocument"><span>Loading</span></div>
+		  <noscript>
+		    <div id="DV-noJS">
+		      The Document Viewer requires that you enable Javascript.
+		    </div>
+		  </noscript>
+
+	</div>
+
+		<script src="/assets/viewer.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/assets/templates.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+		   DV.load( '/doc_viewer/<%= @document_fedora.pid %>/json' , { container: '#DV-container' });
+		</script>
+	
+	
+	
+  

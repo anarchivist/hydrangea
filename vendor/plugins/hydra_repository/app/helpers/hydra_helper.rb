@@ -60,7 +60,11 @@ module HydraHelper
   end
   
   def grouping_facet
+    sort_fields.each do |sf|
+      logger.warn(sf)
+    end
     fields = Hash[sort_fields]
+
     case h(params[:sort])
     when fields['date -']
       'year_facet'
