@@ -16,10 +16,10 @@ module DocViewerHelper
            "location"=>{}}
         ]
       h["resources"]["related_story"] = "" 
-      h["resources"]["page"]["text"] = "/doc_viewer/#{fedora_obj.pid}/page-{page}"
+      h["resources"]["page"]["text"] = "http://#{request.env['HTTP_HOST']}/doc_viewer/#{fedora_obj.pid}/page-{page}"
       h["resources"]["page"]["image"] = "http://salt-prod.stanford.edu:8080/adore-djatoka/resolver?url_ver=Z39.88-2004&rft_id=http://hydra-dev.stanford.edu/#{fedora_obj.pid.gsub('druid:', '')}/page-{page}.jp2&svc_id=info:lanl-repo/svc/getRegion&svc_val_fmt=info:ofi/fmt:kev:mtx:jpeg2000&svc.format=image/jpeg&svc.level={size}&svc.rotate=0" 
-      h["resources"]["pdf"] = "/doc_viewer/#{fedora_obj.pid}/document.pdf"
-      h["resources"]["search"] = "/doc_viewer/#{fedora_obj.pid}/search?q={query}"
+      h["resources"]["pdf"] = "http://#{request.env['HTTP_HOST']}/doc_viewer/#{fedora_obj.pid}/document.pdf"
+      h["resources"]["search"] = "http://#{request.env['HTTP_HOST']}/doc_viewer/#{fedora_obj.pid}/search?q={query}"
       #h["sections"] = [{}]
       h["id"] = fedora_obj.pid
       h["pages"] = prop.pages_values.first.to_i

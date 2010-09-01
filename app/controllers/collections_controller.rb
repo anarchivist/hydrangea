@@ -4,9 +4,10 @@ class CollectionsController < CatalogController
   
   # get search results from the solr index
   def index
-     @extra_controller_params ||= {}
-      (@response, @document_list) = get_search_results( @extra_controller_params.merge!(:q=>build_lucene_query(params[:q])) )
-       @filters = params[:f] || []
+       params = {:qt=>"dismax",:q=>"*:*",:rows=>"0",:facet=>"true", :facets=>{:fields=>Blacklight.config[:facet][:field_names]}}
+       @facet_lookup = Blacklight.solr.find params
+       @response = @facet_lookup
+      @filters = params[:f] || []
        respond_to do |format|
          format.html { save_current_search_params }
          format.rss  { render :layout => false }

@@ -16,9 +16,9 @@ class Ingestor
      ###### Configuration Stuff Here #######
      @fedora_user = 'fedoraAdmin'
      @fedora_pass = 'fedoraAdmin'
-     @fedora_uri = "http://#{@fedora_user}:#{@fedora_pass}@localhost:8983/fedora"
+     @fedora_uri = "http://#{@fedora_user}:#{@fedora_pass}@hydra-aims-dev.stanford.edu/fedora/"
      @fedora_ns = "druid"
-     @solr_uri =  "http://localhost:8983/solr/development"
+     @solr_uri =  "http://hydra-aims-dev.stanford.edu/solr/"
 
      ###### Register the Repos #######
      # => http://projects.mediashelf.us/wiki/active-fedora/ActiveFedora_Console_Tour
@@ -139,7 +139,7 @@ class Ingestor
           elsif f =~ /(.*)\.(pdf)/
              fedora_obj.add_datastream(create_file_ds(f, 'pdf', "#{File.basename(f)}.pdf"))
           elsif f =~  /(.*)\.(jp2)/
-             jp2_dir = File.join('/tmp', fedora_obj.pid.gsub("druid:", ""))
+             jp2_dir = File.join('/tmp', fedora_obj.pid.gsub("druid:", "druid_"))
              FileUtils.mkdir_p(jp2_dir) unless File.directory?(jp2_dir)
              FileUtils.move(f, jp2_dir, :verbose => true)
             
