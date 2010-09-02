@@ -7,7 +7,13 @@
       - title = editable_metadata_field(@document_fedora, "descMetadata", :title, :label => "Title:")
       %dt
       %dd.title
-        = fedora_text_field(@document_fedora,"descMetadata", :title, :multiple=>false)   
+        = fedora_text_field(@document_fedora,"descMetadata", :title, :multiple=>false)
+    = fedora_field_label("descMetadata", :isPartOf, "Subseries:")
+    %dl
+      - subseries = editable_metadata_field(@document_fedora, "descMetadata", :isPartOf, :label => "Subseries:")
+      %dt
+      %dd.title
+        = fedora_text_field(@document_fedora,"descMetadata", :isPartOf, :multiple=>false)   
   %fieldset#contributor_fields
     %legend Contributors
     = fedora_field_label("descMetadata", :creator, "Author:")
@@ -32,6 +38,13 @@
   %fieldset
     %legend Tags
     %dl
+      - archivist_tag = editable_metadata_field(@document_fedora, "descMetadata", :subect, :label => "Subject Values:",:multiple=>true)
+      %dt
+        = fedora_field_label("descMetadata", :subject, "Subject Values:")
+        = fedora_text_field_insert_link "descMetadata", :subject
+      %dd
+        = fedora_text_field(@document_fedora,"descMetadata", :subject, :multiple=>true)
+    %dl
       - archivist_tag = editable_metadata_field(@document_fedora, "properties", :archivist_tag, :label => "Archivist Tags:",:multiple=>true)
       %dt
         = fedora_field_label("properties", :archivist_tag, "Archivist Tags:")
@@ -50,3 +63,11 @@
         = fedora_field_label("descMetadata", :medium, "Document Type:")
       %dd.data_type
         = fedora_select(@document_fedora,"descMetadata", :medium, :choices=>AimsDocument.medium_choices.sort)
+      %dt
+        = fedora_field_label("properties", :medium, "File Type:")
+      %dd
+        = fedora_text_field(@document_fedora,"properties", :file_type, :multiple=>false)
+      %dt
+        = fedora_field_label("descMetadata", :medium, "Format Type:")
+      %dd
+        = fedora_select(@document_fedora,"descMetadata", :format, :choices=>AimsDocument.format_choices.sort)

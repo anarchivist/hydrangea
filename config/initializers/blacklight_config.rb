@@ -68,20 +68,22 @@ Blacklight.configure(:shared) do |config|
   config[:facet] = {
     :field_names => [
       "collection_t",
-      "date_t",
+      "isPartOf_t",
+      "subject_t",
       "title_t",
       "type_t",
       "format_t",
-      "isPartOf_t",
+      "file_type_t",
       "location_t"
       ],
     :labels => {
       "collection_t" => "Collection",
-      "date_t"=>"Date",
+      "isPartOf_t" => "Subseries",
+      "subject_t" => "Subjects",
       "title_t"=>"Title",
       "type_t"=>"Content Type",
+      'file_type_t' => "File Format",
       "format_t" => "Media Format",
-      "isPartOf_t" => "Subseries",
       "location_t"=>"Location"
     },
     :limits=> {nil=>10}

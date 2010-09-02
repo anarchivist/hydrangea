@@ -1,24 +1,28 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'tempfile'
+require 'fastercsv'
+require 'pp'
 require  File.join(File.dirname(__FILE__), '../config/environment.rb')
 
 RAILS_DEFAULT_LOGGER.auto_flushing = 1
 
 class Ingestor
 
-  def initialize(directory=nil)
+  def initialize(file=nil, directory=nil)
 
      Module.const_set("AimsDocument", AimsDocument)
      ###### The directory to be processed ######
+     @file = file
      @directory = directory
-
      ###### Configuration Stuff Here #######
      @fedora_user = 'fedoraAdmin'
      @fedora_pass = 'fedoraAdmin'
-     @fedora_uri = "http://#{@fedora_user}:#{@fedora_pass}@hydra-aims-dev.stanford.edu/fedora/"
+   #  @fedora_uri = "http://#{@fedora_user}:#{@fedora_pass}@hydra-aims-dev.stanford.edu/fedora/"
+    @fedora_uri = "http://#{@fedora_user}:#{@fedora_pass}@localhost:8983/fedora/"
      @fedora_ns = "druid"
-     @solr_uri =  "http://hydra-aims-dev.stanford.edu/solr/"
+  #   @solr_uri =  "http://hydra-aims-dev.stanford.edu/solr/"
+  @solr_uri =  "http://localhost:8983/solr/development"
 
      ###### Register the Repos #######
      # => http://projects.mediashelf.us/wiki/active-fedora/ActiveFedora_Console_Tour
@@ -39,23 +43,23 @@ class Ingestor
      ### NOT USING THESE FOR AIMS INGESTOR
      #@managed = {".pdf" => { "id" => "PDF", "label" =>"Document PDF"} , ".tiff" => "", ".jpg" => { "label" => "Thumbnail"}, ".xml" => ""}
      #@inline = {".dc" => {'id' => 'dublin_core', "label" => "Metadata"}}
-   end #initialize
+  end #initialize
 
   
   
   
 
      def process()
-       if @directory.nil?
+       if @file.nil?
           puts "Fedora Ingestor: This file ingests subdirectories into Fedora as objects. Each of the files are assigned as their own managed datastreams."
           puts "To run the script, you must include a base directory with you objects."
           puts "like so=>    $:  ./ingestor.rb /tmp/objects"
-       elsif File.exists?(@directory)
-          Dir["#{@directory}/*"].each do |obj|
-            ingest_object(obj) if File.directory?(obj)
+       elsif File.exists?(@file)
+         FasterCSV.open("#{@file}", :headers => true).each do |row|
+            ingest_object(row)
           end #do
        else
-         puts "Error: #{@directory} does not exists."
+         puts "Error: #{@file} does not exists."
         end #if @directory.nil?
      end #process
 
@@ -96,22 +100,25 @@ class Ingestor
 
      # This method is passed a directory, makes a new fedora object, then makes datastreams of each of the files in the directory. 
 
-     def ingest_object(obj)
+     def ingest_object(row)
 
+
+      obj = File.join(@directory, File.basename(row["exportedAs"].gsub('\\', '/')))
+      sourceFile = File.join(obj,File.basename(row["exportedAs"].gsub('\\', '/')))
+       
+      if File.exists?(obj)
        # Gets a new PID
-       pid = Nokogiri::XML(open(@fedora_uri + "/management/getNextPID?xml=true&namespace=#{@fedora_ns}", {:http_basic_authentication=>[@fedora_user, @fedora_pass]})).xpath("//pid").text
+       #pid = Nokogiri::XML(open(@fedora_uri + "/management/getNextPID?xml=true&namespace=#{@fedora_ns}", {:http_basic_authentication=>[@fedora_user, @fedora_pass]})).xpath("//pid").text
        
        #testing stuff
-       #pid = "druid:1"
-       #fedora_obj = AimsDocument.load_instance(pid)
-       #fedora_obj.delete
-       
+       pid = "druid:1"
+   
        fedora_obj = AimsDocument.new(:pid => pid)
        fedora_obj.label = File.basename(obj)
-     
+       fedora_obj.save
        print obj + " ===> "
        # now glob the object directory and makes datastreams for each of the files and add them as datastream to the fedora object.
-        fedora_obj.save
+       # fedora_obj.save
        
         dsid = 'rightsMetadata'
         xml_content = fedora_obj.datastreams_in_memory[dsid].content
@@ -125,7 +132,7 @@ class Ingestor
          permissions = {"group" => {"public"=>"read"}}
          ds.update_permissions(permissions)
         
-         fedora_obj.save
+        fedora_obj.save
        
        Dir["#{obj}/**/**"].each do |f|
          
@@ -141,15 +148,13 @@ class Ingestor
           elsif f =~  /(.*)\.(jp2)/
              jp2_dir = File.join('/tmp', fedora_obj.pid.gsub("druid:", "druid_"))
              FileUtils.mkdir_p(jp2_dir) unless File.directory?(jp2_dir)
-             FileUtils.move(f, jp2_dir, :verbose => true)
+             FileUtils.cp(f, jp2_dir, :verbose => true)
             
-          else   
-             cpid = Nokogiri::XML(open(@fedora_uri + "/management/getNextPID?xml=true&namespace=#{@fedora_ns}", {:http_basic_authentication=>[@fedora_user, @fedora_pass]})).xpath("//pid").text
+          elsif f == sourceFile   
+            # cpid = Nokogiri::XML(open(@fedora_uri + "/management/getNextPID?xml=true&namespace=#{@fedora_ns}", {:http_basic_authentication=>[@fedora_user, @fedora_pass]})).xpath("//pid").text
              # testing stuff
-             #cpid = "druid:2"
-             #child_obj = FileAsset.load_instance(cpid)  
-             #child_obj.delete
-
+             cpid = "druid:2"
+            
              child_obj = FileAsset.new(:pid => cpid)
              child_obj.label = File.basename(f)
              dc = child_obj.datastreams['descMetadata']
@@ -165,6 +170,8 @@ class Ingestor
              child_obj.add_datastream(create_file_ds(f, id, label ))
              child_obj.save
              print f + "\n"
+          else
+            puts "not a file to ingest ==> #{f}"
           end #if
          end #unless
        end #dir
@@ -172,24 +179,53 @@ class Ingestor
          dm = fedora_obj.datastreams["descMetadata"]
          prop = fedora_obj.datastreams["properties"]
          
+         labels = row["labels"].split(',')
+         
+         loutput = {"subjects" => [], "access" => []}
+         doc_values = { "D" => "Document", "S" => "Spreadsheet", "E" => "Email", "IM" => "Image", "V" => "Video", "SO" => "Sound"} 
+         comp_values = {"CM:5.25" => "5.25 inch. floppy diskettes", "CM:3.5" => "3.5 inch. floppy diskettes", "CM:P" => "Punch cards", "CM:T" => "Tape" }
+         access_values = {"O" => "owner", "A" => "Archivists", "I" => "Invited", "P" =>"Public", "M"=>"Reading"}
+        
+      
+         labels.each do |l|
+           if doc_values.has_key?(l)
+             loutput["doctype"] = doc_values[l]
+           elsif comp_values.has_key?(l)
+             loutput["mediatype"] = comp_values[l]
+           elsif access_values.has_key?(l)
+             loutput["access"] << access_values[l]
+           elsif l.include?("S:")
+             loutput["subjects"] << l.gsub("S:", '') 
+          end #if
+         end #do
+         
+         pp(loutput)
          prop.collection_values << "Steven J. Gould"
          prop.pages_values << number_of_pages(fedora_obj)
-
-         dm.source_values << File.basename(obj)
-         dm.type_values << "Document"
-         dm.format_values << "5.25 inch floppy diskettes"
-         dm.isPartOf_values = ["Full House"]
+         prop.path_values << row['path']
+         prop.file_size_values << row['size']
+         prop.md5_values << row['md5']
+         prop.sha1_values << row['sha1']
+         prop.file_type_values << row['type']
+         
+         dm.isPartOf_values = row["subseries"].gsub(/[0-9]|Bookmark:/,"").strip
+         dm.source_values << row['filename']
+         dm.type_values << loutput['doctype']
+         dm.format_values <<  loutput["mediatype"]
+       
          dm.title_values << File.basename(obj)
-
+         
+        loutput['subjects'].each { |s| dm.subject_values << s.gsub("S:", "") }
+        
         dm.save
         prop.save
         fedora_obj.save
-        
+
         solr_doc = fedora_obj.to_solr
         solr_doc <<  Solr::Field.new( :discover_access_group_t => "public" )
-        ActiveFedora::SolrService.instance.conn.update(solr_doc )
+        ActiveFedora::SolrService.instance.conn.update(solr_doc)
      
-    
+      end #if exists?    
       
      end #ingest_object
 
@@ -206,10 +242,10 @@ class Ingestor
       len.length
     end #number_of_pages
 
-   end #class
+end #class
 
-   #========== This is the equivalent of a java main method ==========#
-   if __FILE__ == $0
-     ingestor = Ingestor.new(ARGV[0])
-     ingestor.process
-   end
+#========== This is the equivalent of a java main method ==========#
+if __FILE__ == $0
+ ingestor = Ingestor.new(ARGV[0], ARGV[1])
+ ingestor.process
+end

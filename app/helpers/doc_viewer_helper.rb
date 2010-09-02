@@ -10,10 +10,10 @@ module DocViewerHelper
       h = Hash.new { |l, k| l[k] = Hash.new(&l.default_proc) }
       
       h["title"] = dm.title_values.first
-      h["annotations"] =   [ {"title" => "Example Annotation",
-           "content" => "This is an example of an annotation.",
+      h["annotations"] =   [ {"title" => "An Example Annotation",
+           "content" => "",
            "page"=>1,
-           "location"=>{}}
+           "location"=>{20, 20, 20, 20}}
         ]
       h["resources"]["related_story"] = "" 
       h["resources"]["page"]["text"] = "http://#{request.env['HTTP_HOST']}/doc_viewer/#{fedora_obj.pid}/page-{page}"

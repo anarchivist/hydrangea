@@ -9,12 +9,17 @@ class AimsDocument < ActiveFedora::Base
     
     has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata 
     
-    
+     
     # These are all the properties that don't quite fit into Qualified DC
     # Put them on the object itself (in the properties datastream) for now.
     has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
       m.field "note", :text  
       m.field "access", :string
+      m.field "path", :string
+      m.field "file_size", :string
+      m.field "md5", :string
+      m.field "sha1", :string
+      m.field "file_type", :string
       m.field "archivist_tag", :string
       m.field "donor_tag", :string
       m.field 'collection', :string
@@ -75,9 +80,11 @@ class AimsDocument < ActiveFedora::Base
         self.retrieve( {contributor_type.to_sym => index.to_i} ).first.remove
         self.dirty = true
       end
-   
+     
        def self.medium_choices
-          ["Paper Document","Paper","Instructional Material","Proposal", "Reprint","Correspondence"]
+          ["Document","Spreadsheet","Email","Image", "Video","Sound"]
         end
-   
+      def self.format_choices
+        ["5.25 inch. floppy diskettes", "3.5 inch. floppy diskettes", "Punch cards", "Type" ]
+      end
 end
