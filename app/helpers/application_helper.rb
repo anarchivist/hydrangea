@@ -31,7 +31,11 @@ module ApplicationHelper
     response << "<dl>"
     if !ead_description.xpath( xpath_query + "/head" ).first.nil? && !ead_description.xpath( xpath_query + "/p" ).first.nil?
       response << "<dt> #{ead_description.xpath( xpath_query + "/head" ).first.content} </dt>"
-      response << "<dd> #{ead_description.xpath( xpath_query + "/p" ).first.content} </dd>"
+      response << "<dd>"
+      ead_description.xpath( xpath_query + "/p" ).each do |xp|
+        response << "#{xp.content}<br/><br/>"
+      end
+      response <<  "</dd>"
       response << "</dl>"
     end
     if node_name == "controlaccess"

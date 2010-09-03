@@ -108,10 +108,10 @@ class Ingestor
        
       if File.exists?(obj)
        # Gets a new PID
-       #pid = Nokogiri::XML(open(@fedora_uri + "/management/getNextPID?xml=true&namespace=#{@fedora_ns}", {:http_basic_authentication=>[@fedora_user, @fedora_pass]})).xpath("//pid").text
+       pid = Nokogiri::XML(open(@fedora_uri + "/management/getNextPID?xml=true&namespace=#{@fedora_ns}", {:http_basic_authentication=>[@fedora_user, @fedora_pass]})).xpath("//pid").text
        
        #testing stuff
-       pid = "druid:1"
+       #pid = "druid:1"
    
        fedora_obj = AimsDocument.new(:pid => pid)
        fedora_obj.label = File.basename(obj)
@@ -151,9 +151,9 @@ class Ingestor
              FileUtils.cp(f, jp2_dir, :verbose => true)
             
           elsif f == sourceFile   
-            # cpid = Nokogiri::XML(open(@fedora_uri + "/management/getNextPID?xml=true&namespace=#{@fedora_ns}", {:http_basic_authentication=>[@fedora_user, @fedora_pass]})).xpath("//pid").text
+             cpid = Nokogiri::XML(open(@fedora_uri + "/management/getNextPID?xml=true&namespace=#{@fedora_ns}", {:http_basic_authentication=>[@fedora_user, @fedora_pass]})).xpath("//pid").text
              # testing stuff
-             cpid = "druid:2"
+             #cpid = "druid:2"
             
              child_obj = FileAsset.new(:pid => cpid)
              child_obj.label = File.basename(f)
@@ -207,13 +207,14 @@ class Ingestor
          prop.md5_values << row['md5']
          prop.sha1_values << row['sha1']
          prop.file_type_values << row['type']
+         prop.filname_values << File.basename(obj)
          
          dm.isPartOf_values = row["subseries"].gsub(/[0-9]|Bookmark:/,"").strip
          dm.source_values << row['filename']
          dm.type_values << loutput['doctype']
          dm.format_values <<  loutput["mediatype"]
        
-         dm.title_values << File.basename(obj)
+         
          
         loutput['subjects'].each { |s| dm.subject_values << s.gsub("S:", "") }
         

@@ -71,6 +71,7 @@ Blacklight.configure(:shared) do |config|
       "isPartOf_t",
       "subject_t",
       "title_t",
+      "filename_t",
       "type_t",
       "format_t",
       "file_type_t",
@@ -81,6 +82,7 @@ Blacklight.configure(:shared) do |config|
       "isPartOf_t" => "Subseries",
       "subject_t" => "Subjects",
       "title_t"=>"Title",
+      "filename_t" => "Filename"
       "type_t"=>"Content Type",
       'file_type_t' => "File Format",
       "format_t" => "Media Format",

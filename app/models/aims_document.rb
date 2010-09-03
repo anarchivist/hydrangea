@@ -25,6 +25,7 @@ class AimsDocument < ActiveFedora::Base
       m.field 'collection', :string
       m.field 'depositor', :string
       m.field 'pages', :string
+      m.field 'filename', :string
     end
     
     has_metadata :name => "stories", :type=>ActiveFedora::MetadataDatastream do |m|
