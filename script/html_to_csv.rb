@@ -62,11 +62,11 @@ class HtmlToCsv
         spans = xml.search('//span[@class = "bkmkColRight bkmkValue"]')
 
         #all files should have 13 attributes (not including the subseries). 
-        #If the html file has less, then there are no files in this html file.
+        #If the html file has less, then there are no files described in this html file.
         print spans.length
         
         if spans.length < 13
-           print "No files in #{f} \n"
+           print "No files described in #{f} \n"
            return nil
         else
           a = spans.to_a
@@ -77,7 +77,6 @@ class HtmlToCsv
               ss.each {|s| row << s.content}
               rows << row
           end #while
-          print "finished! \n"
           return rows
         end #if
   end #parseHTML
